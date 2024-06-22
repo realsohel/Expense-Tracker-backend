@@ -7,7 +7,7 @@ const IncomeSchema = new mongoose.Schema({
         trim:true,
         maxlength:20,
     },
-    ammount:{
+    amount:{
         type:Number,
         required:true,
         trim:true,
@@ -32,7 +32,7 @@ const IncomeSchema = new mongoose.Schema({
         type:String,
         required:true,
         trim:true,
-        maxlength:20,
+        maxlength:60,
     },
 },{timestamps:true})
 

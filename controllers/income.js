@@ -1,18 +1,18 @@
 import Income from "../models/income.js";
 
 export const addIncome = async(req,res)=>{
-    const {title,ammount,description,category} = req.body;
-    const date = Date.now()
+    const {title,amount,description,category,date} = req.body;
+    // const date = Date.now()
     try {
         const income = Income({
-            title,ammount,description,category ,date
+            title,amount,description,category ,date
         })
 
         if(!title || !description || !category || !date)
             return res.status(400).json({message:"All fields are required"});
         
-        if(ammount<=0 || !ammount==='number')
-            return res.status(400).json({message:"Ammount must me a postive number."})
+        if(amount<=0 || !amount==='number')
+            return res.status(400).json({message:"amount must me a postive number."})
     
         await income.save()
         console.log(income)

@@ -1,18 +1,18 @@
 import Expense from "../models/expense.js";
 
 export const addExpense = async(req,res)=>{
-    const {title,ammount,description,category} = req.body;
-    const date = Date.now()
+    const {title,amount,description,category,date} = req.body;
+    // const date = Date.now()
     try {
         const expense = Expense({
-            title,ammount,description,category ,date
+            title,amount,description,category ,date
         })
 
         if(!title || !description || !category || !date)
             return res.status(400).json({message:"All fields are required"});
         
-        if(ammount<=0 || !ammount==='number')
-            return res.status(400).json({message:"Ammount must me a postive number."})
+        if(amount<=0 || !amount==='number')
+            return res.status(400).json({message:"amount must me a postive number."})
     
         await expense.save()
         console.log(expense)
